@@ -48,6 +48,7 @@ export function AddProductModal({ onClose, onAdd }: AddProductModalProps) {
       price: Number(formData.price),
       sku: formData.sku
     });
+    onClose();
   };
 
   return (

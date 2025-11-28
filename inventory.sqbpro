@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:\Users\francis\OneDrive\Desktop\Templated\Inventory\inventory.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="1"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="1556"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,8:mainproducts"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="products" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="43"/><column index="2" value="123"/><column index="3" value="106"/><column index="4" value="63"/><column index="5" value="40"/><column index="6" value="104"/><column index="7" value="127"/><column index="8" value="40"/><column index="9" value="63"/><column index="10" value="92"/><column index="11" value="94"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">INSERT INTO products (id, name, category, quantity, unit, expirationDate, supplier, price, sku, reorderLevel, batchNumber)
+VALUES ('FS011', 'Turmeric Curcumin', 'Anti-Inflammatory', 180, 'bottle', '2026-05-15', 'HerbalCare Ltd.', 16.50, 'TC-11', 45, 'BATCH2025-11');
+
+INSERT INTO products (id, name, category, quantity, unit, expirationDate, supplier, price, sku, reorderLevel, batchNumber)
+VALUES ('FS012', 'Ginseng Extract', 'Energy Support', 140, 'box', '2026-06-20', 'VitalRoots Inc.', 21.00, 'GS-12', 35, 'BATCH2025-12');
+
+INSERT INTO products (id, name, category, quantity, unit, expirationDate, supplier, price, sku, reorderLevel, batchNumber)
+VALUES ('FS013', 'Collagen Peptides', 'Skin &amp; Joint Health', 220, 'tub', '2026-07-25', 'BeautyWell Corp.', 24.99, 'CLGN-13', 60, 'BATCH2025-13');
+
+INSERT INTO products (id, name, category, quantity, unit, expirationDate, supplier, price, sku, reorderLevel, batchNumber)
+VALUES ('FS014', 'Ashwagandha Capsules', 'Stress Relief', 160, 'bottle', '2026-08-10', 'AyurLife Pharma', 14.75, 'ASH-14', 40, 'BATCH2025-14');
+
+INSERT INTO products (id, name, category, quantity, unit, expirationDate, supplier, price, sku, reorderLevel, batchNumber)
+VALUES ('FS015', 'Spirulina Powder', 'Superfood', 100, 'jar', '2026-09-05', 'GreenEarth Naturals', 19.50, 'SPRL-15', 25, 'BATCH2025-15');
+
+INSERT INTO products (id, name, category, quantity, unit, expirationDate, supplier, price, sku, reorderLevel, batchNumber)
+VALUES ('FS016', 'Elderberry Gummies', 'Immune Support', 250, 'box', '2026-10-12', 'BerryHealth Inc.', 11.99, 'ELDB-16', 70, 'BATCH2025-16');
+
+INSERT INTO products (id, name, category, quantity, unit, expirationDate, supplier, price, sku, reorderLevel, batchNumber)
+VALUES ('FS017', 'Green Tea Extract', 'Antioxidant', 190, 'bottle', '2026-11-18', 'ZenHerbs Co.', 13.25, 'GTE-17', 50, 'BATCH2025-17');
+
+INSERT INTO products (id, name, category, quantity, unit, expirationDate, supplier, price, sku, reorderLevel, batchNumber)
+VALUES ('FS018', 'Milk Thistle', 'Liver Support', 130, 'bottle', '2026-12-22', 'HepatoCare Ltd.', 15.75, 'MT-18', 30, 'BATCH2025-18');
+
+INSERT INTO products (id, name, category, quantity, unit, expirationDate, supplier, price, sku, reorderLevel, batchNumber)
+VALUES ('FS019', 'Garlic Capsules', 'Cardiovascular Health', 210, 'bottle', '2027-01-30', 'HeartWell Naturals', 9.99, 'GRLC-19', 55, 'BATCH2025-19');
+
+INSERT INTO products (id, name, category, quantity, unit, expirationDate, supplier, price, sku, reorderLevel, batchNumber)
+VALUES ('FS020', 'Ginkgo Biloba', 'Cognitive Support', 170, 'bottle', '2027-02-14', 'MindSharp Pharma', 17.25, 'GB-20', 45, 'BATCH2025-20');</sql><current_tab id="0"/></tab_sql></sqlb_project>

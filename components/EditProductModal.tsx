@@ -10,6 +10,7 @@ interface EditProductModalProps {
 
 export function EditProductModal({ product, onClose, onUpdate }: EditProductModalProps) {
   const [formData, setFormData] = useState({
+    id: product.id,
     name: product.name,
     category: product.category,
     quantity: product.quantity.toString(),
@@ -35,10 +36,11 @@ export function EditProductModal({ product, onClose, onUpdate }: EditProductModa
 
   const units = ['bottles', 'containers', 'boxes', 'pouches', 'units'];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    onUpdate({
-      ...product,
+
+    const updatedProduct = {
+      id: formData.id,
       name: formData.name,
       category: formData.category,
       quantity: Number(formData.quantity),
@@ -49,9 +51,19 @@ export function EditProductModal({ product, onClose, onUpdate }: EditProductModa
       supplier: formData.supplier,
       price: Number(formData.price),
       sku: formData.sku
+    };
+
+    onUpdate(updatedProduct);
+
+    await fetch(`http://localhost:5000/api/items/${product.id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedProduct)
     });
+
     onClose();
   };
+
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
@@ -71,6 +83,9 @@ export function EditProductModal({ product, onClose, onUpdate }: EditProductModa
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Product Name */}
+
+
+
             <div className="md:col-span-2">
               <label className="block text-sm text-gray-700 mb-2">
                 Product Name *
