@@ -1,6 +1,6 @@
 from flask import Blueprint,request,jsonify
 from services.inventory_service import InventoryService
-
+from datetime import datetime,timedelta
 
 inventory_bp = Blueprint('inventory',__name__)
 
@@ -54,3 +54,26 @@ def delete_item(item_id):
     
     # Success
     return jsonify({'message': result['message']}), 200
+
+@inventory_bp.route('/expiring_items', methods=['GET'])
+def get_expiring_soon():
+    today = datetime.now().date()
+    threshold = today + timedelta(days=90)
+
+    expiring_soon = [
+        product for product in service.get_items()
+        if today < datetime.strptime(product['expirationDate'], '%Y-%m-%d').date() <= threshold
+    ]
+
+    already_expired = [
+        product for product in service.get_items()
+        if datetime.strptime(product['expirationDate'], '%Y-%m-%d').date() <= today 
+    ]
+
+    print(expiring_soon)  # Debug: Print filtered products
+    return jsonify(
+        {
+            "expiring_soon":expiring_soon,
+            "already_expired":already_expired
+        }
+    ), 200
