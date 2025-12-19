@@ -23,7 +23,7 @@ def get_items():
 def get_item(item_id):
     result = service.get_item(item_id)
     if result is None:
-        return jsonify({"error","Item not found"}),404
+        return jsonify({"error":"Item not found"}),404
     return jsonify(result),200
 
 
@@ -35,5 +35,22 @@ def updated_item(item_id):
 
 @inventory_bp.route("/<item_id>",methods=['DELETE'])
 def delete_item(item_id):
-    service.delete_item(item_id)
-    return jsonify({'message':'Item deleted'}),200
+    """
+    Delete an item by ID.
+    
+    Returns:
+        - 200 if deleted successfully
+        - 404 if item not found
+        - 500 if server error
+    """
+    result = service.delete_item(item_id)
+    
+    # Check if there was an error
+    if result.get('error'):
+        if 'not found' in result.get('message', '').lower():
+            return jsonify({'error': result['message']}), 404
+        else:
+            return jsonify({'error': result['message']}), 500
+    
+    # Success
+    return jsonify({'message': result['message']}), 200

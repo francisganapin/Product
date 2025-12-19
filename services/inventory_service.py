@@ -79,7 +79,21 @@ class InventoryService:
             }
         }
     
-    def delete_item(self, item_id):
-        exists = any(i['id'] == item_id for i in self.inventory)
-        self.inventory = [i for i in self.inventory if i['id'] != item_id]
-        return {'message': 'Item deleted'} if exists else {'message': 'Item not found'}
+    def delete_item(self,item_id):
+
+
+        product = self.session.query(Product).filter(Product.id == item_id).first()
+
+        if product is None:
+            return {'message':'item not found','error':True}
+        
+        try:
+            self.session.delete(product)
+
+            self.session.commit()
+
+            return {'message':"item deleted",'error':False}
+        
+        except Exception as e:
+            self.session.rollback()
+            return {'message':f"Error deleteing item {str(e)}","error":True}

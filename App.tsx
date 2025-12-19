@@ -78,9 +78,34 @@ export default function App() {
     setIsAddModalOpen(false);
   };
 
-  const handleDeleteProduct = (id: string) => {
-    setProducts(products.filter(p => p.id !== id));
+  const handleDeleteProduct = async (id: string) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/items/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        setProducts(products.filter((p) => p.id !== id));
+      
+        console.log("Deleted:", data.message);
+        console.log("Deleted product ID:", id);
+      } else {
+        console.error("Error:", data.error);
+        alert(data.error);
+        console.log("Deleted product ID:", id);
+      }
+    } catch (error) {
+      console.error("Network error:", error);
+      alert("Failed to connect to server");
+      console.log("Deleted product ID:", id);
+    }
   };
+  
 
   const handleUpdateProduct = (updatedProduct: Product) => {
     setProducts(products.map(p => p.id === updatedProduct.id ? updatedProduct : p));
